@@ -1,13 +1,14 @@
 from django.db import models
 
 
-class Activities(models.Model):
+class Activity(models.Model): #Event
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     title= models.CharField(max_length=30)
     activity_id = models.CharField(max_length=255, blank=True)
     created = models.DateTimeField(auto_now=True)
     longitude = models.ForeignKey("Mappoint", on_delete= models.CASCADE)
     latitude = models.ForeignKey("Mappoint", on_delete= models.CASCADE)
+    # longitude/ latitude oder einfach Mappoint Id
 
     def __str__(self):
         return self.title
@@ -16,11 +17,6 @@ class Activities(models.Model):
         ordering = ["-created"]
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
 
 
 """
