@@ -6,8 +6,8 @@ class Activity(models.Model): #Event
     title= models.CharField(max_length=30)
     activity_id = models.CharField(max_length=255, blank=True)
     created = models.DateTimeField(auto_now=True)
-    longitude = models.ForeignKey("Mappoint", on_delete= models.CASCADE)
-    latitude = models.ForeignKey("Mappoint", on_delete= models.CASCADE)
+   #  longitude = models.ForeignKey("Mappoint", on_delete= models.CASCADE)
+   #  latitude = models.ForeignKey("Mappoint", on_delete= models.CASCADE)
     # longitude/ latitude oder einfach Mappoint Id
 
     def __str__(self):
