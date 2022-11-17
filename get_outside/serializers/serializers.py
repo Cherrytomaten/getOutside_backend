@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 """ from django.contrib.auth.models import User """
 
-from get_outside.models import activityModel, categoryModel
+from get_outside.models import categoryModel, mappointModel
 
 
 """ # Serializers define the API representation.
@@ -12,10 +12,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'username', 'email', 'is_staff') """
 
 # Serializers define the API representation.
-class ActivitySerializer(serializers.HyperlinkedModelSerializer):
+class MappointSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = activityModel
-        fields = ('id','title', 'activity_id', 'category','created')
+        model = mappointModel
+        fields = ('id','title', 'category', 'address', 'created', 'notes', 'openingHours',
+         'description', 'picture', 'longitude', 'latitude', 'ratings')
 
 # Serializers define the API representation.
 class CategorySerializer(serializers.HyperlinkedModelSerializer):

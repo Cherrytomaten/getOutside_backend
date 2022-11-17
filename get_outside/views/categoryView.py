@@ -36,13 +36,12 @@ class CategoryViewSet(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CategoryViewSet2(APIView):
-
-    @api_view(['GET'])
-    def detail_view(self, pk):
-        try:
-            return Category.objects.get(pk=pk)
-        except Category.DoesNotExist:
-            return Response(CategorySerializer.errors, status=status.HTTP_404_NOT_FOUND)
+    # @api_view(['GET'])
+    # def detail_view(self, pk):
+    #     try:
+    #         return Category.objects.get(pk=pk)
+    #     except Category.DoesNotExist:
+    #         return Response(CategorySerializer.errors, status=status.HTTP_404_NOT_FOUND)
 
     @api_view(['PUT', 'GET'])
     def put(self, request,pk, format='json'): #request, id
