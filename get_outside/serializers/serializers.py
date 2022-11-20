@@ -15,8 +15,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class MappointSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = mappointModel
-        fields = ('id','title', 'category', 'address', 'created', 'notes', 'openingHours',
-         'description', 'picture', 'longitude', 'latitude', 'ratings')
+        fields = ('id','title', 'category', 'address', 'created', 'notes'
+        , 'openingHours', 'description', 'picture', 'longitude', 'latitude', 'ratings'
+        )
 
 # Serializers define the API representation.
 class CategorySerializer(serializers.HyperlinkedModelSerializer):

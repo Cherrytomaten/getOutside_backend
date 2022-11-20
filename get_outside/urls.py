@@ -6,6 +6,6 @@ urlpatterns = [
    path('category', CategoryViewSet.as_view(), name='category'),
    path('category/<pk>', CategoryViewSet2.as_view()),
 
-   path('mappoint',MappointViewSet.as_view(), name='activity'),
+   path('mappoint',MappointViewSet.as_view(), name='mappoint'),
    path('mappoint/<pk>', MappointViewSet2.as_view()),
 ]

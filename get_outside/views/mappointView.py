@@ -10,28 +10,27 @@ from rest_framework.parsers import JSONParser
 
 # ViewSets define the view behavior.
 class MappointViewSet(APIView):
-    queryset = Mappoint.objects.all()
-    serializer_class = MappointSerializer(queryset, many=True)
+     queryset = Mappoint.objects.all()
+     serializer_class = MappointSerializer(queryset, many=True)
 
-
-    @api_view(['POST', 'GET'])
-    def post(self, request, format='json'):
-        data_request = JSONParser().parse(request)
-        serializer = MappointSerializer(data=data_request)
-        if serializer.is_valid():
-            activity = serializer.save()
-            if activity:
-                json = serializer.data
-                return Response(json, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['POST', 'GET'])
+def post(self, request, format='json'):
+    data_request = JSONParser().parse(request)
+    serializer = MappointSerializer(data=data_request)
+    if serializer.is_valid():
+        activity = serializer.save()
+        if activity:
+            json = serializer.data
+            return Response(json, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class MappointViewSet2(APIView):
     @api_view(['GET'])
     def detail_view(self, pk):
-        try:
-            return Mappoint.objects.get(pk=pk)
-        except Mappoint.DoesNotExist:
-            return Response(MappointSerializer.errors, status=status.HTTP_404_NOT_FOUND)
+         try:
+             return Mappoint.objects.get(pk=pk)
+         except Mappoint.DoesNotExist:
+             return Response(MappointSerializer.errors, status=status.HTTP_404_NOT_FOUND)
 
     @api_view(['PUT', 'GET'])
     def put(self, request, pk, format='json'):
@@ -52,5 +51,4 @@ class MappointViewSet2(APIView):
         deleteItem.delete()
         return Response(
           #  'message': 'Todo Deleted Successfully',
-            status=status.HTTP_200_OK
-        )
+            status=status.HTTP_200_OK)

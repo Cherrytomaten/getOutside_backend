@@ -12,14 +12,14 @@ class Mappoint(models.Model):
     address = models.TextField()
     created = models.DateTimeField(auto_now=True)
     #end = models.DateTimeField()
-    notes = models.Choices(choices=CHOICES)
+    notes = models.CharField(choices=CHOICES, max_length=100, default='Outdoor')
     openingHours= models.DateTimeField()
     description = models.TextField()
     picture = models.TextField() #base64 string
-    longitude = models.FloatField()
-    latitude= models.FloatField()
+    longitude = models.FloatField(max_length=10)
+    latitude= models.FloatField(max_length=10)
     #creator_id=models.ForeignKey("User")
-    ratings= models.FloatField()
+    ratings= models.FloatField(max_length=20)
 
 
 
