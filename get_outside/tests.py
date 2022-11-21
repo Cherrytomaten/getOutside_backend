@@ -1,9 +1,17 @@
-from django.test import TestCase, Client
+from django.test import TestCase
+from get_outside.models.categoryModel import Category
 
 # Create your tests here.
 
-c = Client()
-response = c.post('user/create', {'email': 'emilia.d@web.de', 'username': 'emilia', 'password': '12345678'})
-response.status_code
-""" response = c.get('/customer/details/')
-response.content """
+class CategoryTestCase(TestCase):
+    def setUp(self):
+        Category.objects.create(name="Basketball")
+        Category.objects.create(name="Soccer")
+
+    def compareCategory(self):
+        basketball = Category.objects.get(name="Basketball")
+        soccer = Category.objects.get(name="Soccer")
+        self.assertEqual(basketball,soccer)
+
+    def getCategory(self):
+        Category.objects.all()
