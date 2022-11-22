@@ -5,4 +5,4 @@ from rest_framework import serializers
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['mappoint_id', 'author_id', 'created_at', 'text', 'rating', 'image', 'video']
+        fields = ['mappoint_id', 'author_id', 'created_at', 'text']

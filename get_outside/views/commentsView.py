@@ -1,58 +1,26 @@
-from django.shortcuts import (get_object_or_404,
-                              render,
-                              HttpResponseRedirect)
 from django.http import HttpResponse
+from django.shortcuts import HttpResponseRedirect, get_object_or_404
+from rest_framework import permissions, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from get_outside.serializers import commentsSerializer
+from rest_framework.decorators import api_view
+
 from get_outside.models.commentsModel import Comment
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views import View
 
-class CommentsCreate (CreateView):
-    model = Comment
-    fields = ['mappoint_id', 'author_id', 'created_at', 'text', 'rating', 'image', 'video']
-
-class CommentsGet (View):
-    def get(self, request):
-        comment = get_object_or_404(Comment, id = id)
-        return HttpResponse(comment)
-
-class CommentsUpdate (UpdateView):
-    # specify the model you want to use
-    model = Comment
-
-    # specify the fields
-    fields = ['text', 'rating', 'image', 'video']
-
-    # can specify success url
-    # url to redirect after successfully
-    # updating details
-    success_url ="/"
-
-class CommentsDelete (DeleteView):
-    # specify the model you want to use
-    model = Comment
-
-    # can specify success url
-    # url to redirect after successfully
-    # updating details
-    success_url ="/"
-
-
-
-# Create your views here.
-
-""" # ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer """
+queryset = Comment.objects.all()
+# serializer_class = commentsSerializer
+permission_classes = (permissions.AllowAny,)
 
 # ViewSets define the view behavior.
-"""
-class CommentsViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
-    serializer_class = CommentsSerializer
 
-    def post_comment (self, request, format='json'):
-        serializer = CommentsSerializer(data=request.data)
+class CommentsViewSet(APIView):
+    queryset = Comment.objects.all()
+    # serializer_class = commentsSerializer
+    permission_classes = (permissions.AllowAny,)
+
+    def post (self, request, format='json'):
+        serializer = commentsSerializer(data=request.data)
         if serializer.is_valid():
             comment = serializer.save()
             if comment:
@@ -60,16 +28,22 @@ class CommentsViewSet(viewsets.ModelViewSet):
                 return Response(json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete_comment (request, id):
+    def delete (request, id):
         comment = get_object_or_404(Comment, id = id)
         if comment:
             comment.delete()
         return HttpResponseRedirect("/")
 
-    def update_comment (self, request, id):
+    def update (self, request, id):
         comment = get_object_or_404(Comment, id = id)
-        serializer = CommentsSerializer(data=request.data)
+        serializer = commentsSerializer(data=request.data)
         if comment:
             comment.text = serializer.text # sth so dass Text von Comment bearbeitet werden kann
         return HttpResponse("comment updated")
-"""
+
+    def get (request, id):
+        comment = get_object_or_404(Comment, id = id)
+        if comment:
+            return Response (comment)
+        else:
+            return HttpResponse("id not found / no authorization")
