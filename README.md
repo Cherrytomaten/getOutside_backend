@@ -20,7 +20,7 @@ Funktionen:
 zusätzliche Funktionen können, wenn die Zeit reicht, noch hinzugefügt werden
 
 ## Autoren
-Lilian Alice Drabinski, Josefine Hoppe,  Emilia Dörschmann, Adham Elgendy, Marlon Kerth, Leon Pester
+Lilian Alice Drabinski, Josefine Hoppe, Emilia Dörschmann, Adham Elgendy, Marlon Kerth, Leon Pester
 
 ## Installation
 A little intro about the installation.
