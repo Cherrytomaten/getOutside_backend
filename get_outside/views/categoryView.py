@@ -6,18 +6,18 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
 from rest_framework.parsers import JSONParser
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
 
 # ViewSets define the view behavior.
 class CategoryViewSet(APIView):
     get_serializer= CategorySerializer
 
-
+    permission_classes = (AllowAny,)
 # detailed View only admin
     def detail_view(self, id):
         try:
-            return Category.objects.get(id=id)
+            return get_object_or_404(Category, id=id)
         except Category.DoesNotExist:
             return Response(CategorySerializer.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -44,7 +44,6 @@ class CategoryViewSet(APIView):
 
 class CategoryViewSet2(APIView):
 
-    permission_classes = (IsAuthenticated,)
 
     def put(self, request, pk , format='json'):
         object = get_object_or_404(Category, pk=pk)

@@ -8,7 +8,7 @@ from django.urls import reverse
 
 # Create your tests here.
 
-# client = APIClient()
+client = APIClient()
 
 # class TestSignup(unittest.TestCase):
 #     def setUp(self):
@@ -20,17 +20,17 @@ from django.urls import reverse
 #         self.pravesh.set_password(self.password)
 
 
-#     def test_method(self):
-#         client.login(email=self.pravesh.email, password=self.password)
-#         token = Token.objects.create(user= self.pravesh)
-#         response= client.post(
-#             reverse('account:post-data'),
-#             data = json.dumps(self.data),
-#             HTTP_AUTHORIZATION='Token {}'.format(token),
-#             content_type='aaplication/json'
-#         )
-#     def setUp(self):
-#         self.driver = webdriver.Chrome()
+    # def test_method(self):
+    #     client.login(email=self.pravesh.email, password=self.password)
+    #     token = Token.objects.create(user= self.pravesh)
+    #     response= client.post(
+    #         reverse('account:post-data'),
+    #         data = json.dumps(self.data),
+    #         HTTP_AUTHORIZATION='Token {}'.format(token),
+    #         content_type='aaplication/json'
+    #     )
+    # def setUp(self):
+    #     self.driver = webdriver.Chrome()
 
 #     def test_create_access_token_for_user_no_user(self, auth_obj):
 #         token = auth_obj.create_access_token_for_user(user=None)
