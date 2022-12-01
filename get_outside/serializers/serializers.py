@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 """ from django.contrib.auth.models import User """
 
-from ..models.mappointModel import Mappoint
+
 from ..models.categoryModel import Category
 
 
@@ -14,13 +14,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'username', 'email', 'is_staff') """
 
 
-# Serializers define the API representation.
-class MappointSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Mappoint
-        fields = ('id','title', 'category', 'address', 'created', 'notes'
-        , 'openingHours', 'description', 'picture', 'longitude', 'latitude', 'ratings'
-        )
+
 
 # Serializers define the API representation.
 class CategorySerializer(serializers.ModelSerializer):
