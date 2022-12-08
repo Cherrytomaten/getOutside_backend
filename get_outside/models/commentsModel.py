@@ -1,6 +1,7 @@
 from django.db import models
-from ...authentication import models as userModel
+# from getOutside-backend.authentication.models import CustomUser #models as userModel
 # from get_outside.models import mappointModel
+userModel = __import__("getOutside-backend.authentication.models.py")
 
 class Comment(models.Model):
 
