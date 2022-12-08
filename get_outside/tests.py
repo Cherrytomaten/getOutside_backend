@@ -1,5 +1,5 @@
 from django.test import TestCase
-from get_outside.models.commentsModel import Comment
+from models.commentsModel import Comment
 from rest_framework.test import APIClient
 import pytest
 

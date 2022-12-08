@@ -1,5 +1,5 @@
 from django.db import models
-from authentication import models as userModel
+from ...authentication import models as userModel
 # from get_outside.models import mappointModel
 
 class Comment(models.Model):
