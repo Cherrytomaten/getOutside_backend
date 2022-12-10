@@ -2,9 +2,11 @@
 
 #Virtuel Enviorment
 .venv/
+venv/
 
 #database
 *.sqlite3
+db.sqlite3
 
 # dependencies
 /node_modules
@@ -25,6 +27,7 @@
 .DS_Store
 *.pem
 __pycache__
+__pycache__/
 
 # debug
 npm-debug.log*
@@ -36,6 +39,7 @@ yarn-error.log*
 .env*.local
 .venv
 
+
 # vercel
 .vercel
 
@@ -45,3 +49,13 @@ next-env.d.ts
 
 # webstorm
 .idea
+
+.vscode
+
+*.py[cod]
+media/*
+keys/
+logs/*
+.coverage
+.idea/
+*.DS_STORE
