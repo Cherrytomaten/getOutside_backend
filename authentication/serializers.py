@@ -4,7 +4,7 @@ from .models import CustomUser
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
-#customizeToken
+# customizeToken
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @classmethod
@@ -12,13 +12,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super(MyTokenObtainPairSerializer, cls).get_token(user)
 
         # Add custom claims
-        token['username'] = user.username
-        token['first_name'] = user.first_name
-        token['last_name'] = user.last_name
+        # token['username'] = user.username
+        # token['first_name'] = user.first_name
+        # token['last_name'] = user.last_name
         return token
 
-class CustomUserSerializer(serializers.ModelSerializer):
 
+class CustomUserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True
     )
@@ -37,6 +37,13 @@ class CustomUserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'first_name', 'last_name', 'email']
+
 
 class ChangePasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
@@ -100,7 +107,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
         instance.last_name = validated_data['last_name']
         instance.email = validated_data['email']
         instance.username = validated_data['username']
-        #add other attributes...
+        # add other attributes...
 
         instance.save()
 

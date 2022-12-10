@@ -6,7 +6,8 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import CustomUser
-from .serializers import CustomUserSerializer, ChangePasswordSerializer, MyTokenObtainPairSerializer, UpdateUserSerializer
+from .serializers import CustomUserSerializer, ChangePasswordSerializer, MyTokenObtainPairSerializer, \
+    UpdateUserSerializer, UserSerializer
 
 
 # custom token
@@ -52,3 +53,20 @@ class ChangePasswordView(generics.UpdateAPIView):
     queryset = CustomUser.objects.all()
     permission_classes = (IsAuthenticated,)
     serializer_class = ChangePasswordSerializer
+
+
+class UserView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        user_instance = request.user
+        serializer = UserSerializer(user_instance)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def delete(self, request, *args, **kwargs):
+        user_instance = request.user
+        user_instance.delete()
+        return Response(
+            {"res": "User deleted!"},
+            status=status.HTTP_200_OK
+        )
