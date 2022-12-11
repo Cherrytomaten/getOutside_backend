@@ -40,9 +40,11 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.ImageField(required=False)
+
     class Meta:
         model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'email']
+        fields = ['username', 'first_name', 'last_name', 'email', 'profile_picture']
 
 
 class ChangePasswordSerializer(serializers.ModelSerializer):
@@ -81,6 +83,8 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
 class UpdateUserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
 
+    # profile_picture = serializers.ImageField(required=False)
+
     class Meta:
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email')
@@ -107,8 +111,20 @@ class UpdateUserSerializer(serializers.ModelSerializer):
         instance.last_name = validated_data['last_name']
         instance.email = validated_data['email']
         instance.username = validated_data['username']
+        # instance.profile_picture = validated_data['profile_picture']
         # add other attributes...
 
         instance.save()
 
         return instance
+
+
+class ProfilePictureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ["profile_picture"]
+
+    def save(self, *args, **kwargs):
+        if self.instance.profile_picture:
+            self.instance.profile_picture.delete() #damit nur ein pp exestieren kann
+        return super().save(*args, **kwargs)

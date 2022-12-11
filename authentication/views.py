@@ -4,10 +4,10 @@ from rest_framework import status, permissions, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.parsers import MultiPartParser, FormParser
 from .models import CustomUser
 from .serializers import CustomUserSerializer, ChangePasswordSerializer, MyTokenObtainPairSerializer, \
-    UpdateUserSerializer, UserSerializer
+    UpdateUserSerializer, UserSerializer, ProfilePictureSerializer
 
 
 # custom token
@@ -57,6 +57,7 @@ class ChangePasswordView(generics.UpdateAPIView):
 
 class UserView(APIView):
     permission_classes = (IsAuthenticated,)
+    parser_classes = (MultiPartParser, FormParser)
 
     def get(self, request, *args, **kwargs):
         user_instance = request.user
@@ -70,3 +71,16 @@ class UserView(APIView):
             {"res": "User deleted!"},
             status=status.HTTP_200_OK
         )
+
+
+class ProfilePictureUpload(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+        serializer = ProfilePictureSerializer(data=request.data, instance=request.user)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
