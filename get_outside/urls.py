@@ -10,5 +10,5 @@ urlpatterns = [
     path('mappoint', MappointViewSet.as_view(), name='mappoint'),
     path('mappoint/<int:pk>', MappointViewSet.as_view()),
 
-    path('favorites/pin', FavoritePinView.as_view(), name='favoritePin'),
+    path('favorites/pin/', FavoritePinView.as_view(), name='favoritePin'),
 ]

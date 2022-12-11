@@ -1,6 +1,4 @@
-from django.http import JsonResponse
-from rest_framework import status, permissions
-from rest_framework.parsers import JSONParser
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,58 +7,36 @@ from authentication.models import CustomUser
 from get_outside.serializers.favoritesSerializer import FavoritePinSerializer
 from get_outside.models.favoritesModel import FavoritePins
 
-'''
-class FavoritePinView(APIView):
-    permission_classes = [permissions.AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        favorites = FavoritePins.objects.all()
-        # user_instance = request.user
-        serializer = FavoritePinSerializer(favorites, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def post(self, request, *args, **kwargs):
-        user_instance = request.user
-        # parse the incoming information
-        data = JSONParser().parse(request)
-        # instanciate with the serializer
-        serializer = FavoritePinSerializer(data=data)
-        # check if the sent information is okay
-        if serializer.is_valid():
-            # if okay, save it on the database
-            serializer.save()
-            # provide a Json Response with the data that was saved
-            return JsonResponse(serializer.data, status=201)
-            # provide a Json Response with the necessary error information
-        print(serializer.errors)
-        return JsonResponse(serializer.errors, status=400)
-
-    '''
-
 
 class FavoritePinView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, *args, **kwargs):
-
-        favorites = FavoritePins.objects.filter(user=request.user.id)
+    def get(self, request, *args, **kwargs): #get favorite list form loggedin user
+        favorites = FavoritePins.objects.filter(user=request.user.id)  # favorites from that user
         serializer = FavoritePinSerializer(favorites, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request, *args, **kwargs):
-        #data = JSONParser().parse(request)
-        data={
-            'title': request.data.get('title'),
+    def post(self, request, *args, **kwargs):#add pin to list from loggedin user
+        data = {
+            'pin': request.data.get('pin'),  # pin id
             'user': request.user.id
         }
-        # instanciate with the serializer
+        already_exists = FavoritePins.objects.filter(pin=request.data.get('pin'), user=request.user.id)
+        if already_exists:
+            return Response({"res": "Object already your favorite!"}, status=status.HTTP_400_BAD_REQUEST)
         serializer = FavoritePinSerializer(data=data)
-        # check if the sent information is okay
         if serializer.is_valid():
-            # if okay, save it on the database
             serializer.save()
-            # provide a Json Response with the data that was saved
             return Response(serializer.data, status=201)
-            # provide a Json Response with the necessary error information
         print(serializer.errors)
         return Response(serializer.errors, status=400)
+
+    def delete(self, request, *args, **kwargs): #delete pin from list from loggedin user
+        pin = request.data.get('pin')
+        user = request.user.id
+        instance = FavoritePins.objects.filter(pin=pin, user=user)
+        print(instance)
+        if not instance:
+            return Response({"res": "Object with id does not exists"}, status=status.HTTP_400_BAD_REQUEST)
+        instance.delete()
+        return Response({"res": "Object deleted!"}, status=status.HTTP_200_OK)
