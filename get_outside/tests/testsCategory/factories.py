@@ -1,5 +1,5 @@
-import factory
 from get_outside.models.categoryModel import Category
+import factory
 
 #Factory Module for model so we test our API’s with automatically generated dummy data
 

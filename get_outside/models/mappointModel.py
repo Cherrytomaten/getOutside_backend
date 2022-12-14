@@ -10,7 +10,7 @@ class Mappoint(models.Model):
     )
 
     title= models.CharField(max_length=30)
-    category = models.ForeignKey("Category",  on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True)
     address = models.TextField()
     created = models.DateTimeField(auto_now=True)
     # end = models.DateTimeField()
@@ -20,7 +20,7 @@ class Mappoint(models.Model):
     picture = models.TextField() #base64 string
     longitude = models.FloatField(max_length=10)
     latitude= models.FloatField(max_length=10)
-    creator_id= models.ForeignKey('CustomUser', on_delete=models.CASCADE)
+    creator_id= models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     ratings= models.FloatField(max_length=20)
 
 

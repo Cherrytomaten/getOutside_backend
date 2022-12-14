@@ -54,7 +54,7 @@ class MappointViewSet(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    def delete(self, pk, format='json'):
+    def delete(self,request, pk, format='json'):
         deleteItem = get_object_or_404(Mappoint, pk=pk)
         deleteItem.delete()
         return Response(
