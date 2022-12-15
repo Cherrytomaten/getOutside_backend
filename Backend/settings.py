@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     # our apps
     'get_outside',
     'authentication',
-    # Django Pakages
+    # Django Packages
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-
+    'rest_framework.test',
+    'pytest'
 ]
 
 MIDDLEWARE = [
@@ -132,7 +133,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),  #
+     )
 }
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
@@ -142,7 +143,7 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
-    'AUTH_HEADER_TYPES': ('Bearer',), #vorher JWT
+    'AUTH_HEADER_TYPES': ('JWT',),
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),

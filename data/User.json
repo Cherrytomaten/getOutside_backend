@@ -1,0 +1,102 @@
+[
+    {
+        "model": "authentication.CustomUser",
+        "pk": 101,
+        "fields": {
+            "username": "Yusra.M",
+            "email": "YusraM@mail.de",
+            "first_name": "Yusra",
+            "last_name": "Mardini"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 102,
+        "fields": {
+            "username": "Laura.D",
+            "email": "LauraD@mail.de",
+            "first_name": "Laura",
+            "last_name": "Dekker"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 103,
+        "fields": {
+            "username": "Larissa.L",
+            "email": "LarissaL@mail.de",
+            "first_name": "Larissa",
+            "last_name": "Latynina"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 104,
+        "fields": {
+            "username": "Dawn.F",
+            "email": "DawnF@mail.de",
+            "first_name": "Dawn",
+            "last_name": "Fraser"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 105,
+        "fields": {
+            "username": "Junko.T",
+            "email": "JunkoT@mail.de",
+            "first_name": "Junko",
+            "last_name": "Tabei"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 106,
+        "fields": {
+            "username": "Fanny.BK",
+            "email": "FannyBK@mail.de",
+            "first_name": "Fanny",
+            "last_name": "Blankers-Koen"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 107,
+        "fields": {
+            "username": "Mildred.D",
+            "email": "MildredD@mail.de",
+            "first_name": "Mildred",
+            "last_name": "Didrikson"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 108,
+        "fields": {
+            "username": "Chris.M",
+            "email": "ChrisM@mail.de",
+            "first_name": "Chris",
+            "last_name": "Mosier"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 109,
+        "fields": {
+            "username": "Kyle.M",
+            "email": "KyleM@mail.de",
+            "first_name": "Kyle",
+            "last_name": "Manard"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 110,
+        "fields": {
+            "username": "Mo.F",
+            "email": "MoF@mail.de",
+            "first_name": "Mo",
+            "last_name": "Farah"
+        }
+    }
+]
