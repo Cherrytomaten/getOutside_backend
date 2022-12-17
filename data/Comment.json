@@ -1,0 +1,12 @@
+[
+    {
+        "model": "get_outside.Comment",
+          "pk": 1,
+          "fields": {
+              "mappoint_id": "1",
+              "author_id": "101",
+              "created_at": "2018-11-20T15:58:44.767594-06:00",
+              "text": "ja ja ja ja ja"
+          }
+    }
+]
