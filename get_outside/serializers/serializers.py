@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from get_outside.serializers.commentsSerializer import CommentsSerializer
 
 
 """ from django.contrib.auth.models import User """
@@ -8,6 +9,7 @@ from ..models.categoryModel import Category
 
 # Serializers define the API representation.
 class MappointSerializer(serializers.ModelSerializer):
+    comments = CommentsSerializer(many=True, required=False)
     class Meta:
         model = Mappoint
         fields = '__all__'
