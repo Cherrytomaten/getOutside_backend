@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'rest_framework.test',
+    'pytest',
 
 ]
 
@@ -154,7 +155,7 @@ SIMPLE_JWT = {
 # Custom user model
 AUTH_USER_MODEL = "authentication.CustomUser"
 
-# Vercel Deployment
+#Deployment
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATIC_URL = "/static/"
