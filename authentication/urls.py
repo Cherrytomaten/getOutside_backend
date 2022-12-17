@@ -11,5 +11,5 @@ urlpatterns = [
     path('user/password/<int:pk>/', ChangePasswordView.as_view(), name="change_password"),
     path('user/data/<int:pk>/', UpdateProfileView.as_view(), name="change_data"),
     path('user/', UserView.as_view(), name="get_user"),
-    path('user/upload/', ProfilePictureUpload.as_view(), name="uploadProfilePicture"),
+    path('user/upload/<int:pk>', ProfilePictureUpload.as_view(), name="uploadProfilePicture"),
 ]

@@ -1,3 +1,4 @@
+from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status, permissions, generics
@@ -73,22 +74,35 @@ class UserView(APIView):
         )
 
 
+'''
+class ProfilePictureUpload(UpdateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = ProfilePictureSerializer
+    lookup_field = 'pk'
+
+    def perform_update(self, serializer):
+        serializer.save(profile_picture=self.request.data())
+'''
+
+
 class ProfilePictureUpload(APIView):
     parser_classes = [MultiPartParser, FormParser]
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, format=None):
-        file = request.data
+    def put(self, request, format=None):
+        file = request.data['file']
         data = {
             'profile_picture': file
         }
-        serializer = UserSerializer(data=request.data, instance=request.user)
+        serializer = UserSerializer(instance=request.user, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+'''
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()
 
@@ -102,3 +116,4 @@ class ProfilePictureUpload(APIView):
             {"res": "Object deleted!"},
             status=status.HTTP_200_OK
         )
+'''
