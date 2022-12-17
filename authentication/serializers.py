@@ -120,11 +120,15 @@ class UpdateUserSerializer(serializers.ModelSerializer):
 
 
 class ProfilePictureSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.ImageField()
+
     class Meta:
         model = CustomUser
         fields = ["profile_picture"]
 
+'''
     def save(self, *args, **kwargs):
         if self.instance.profile_picture:
             self.instance.profile_picture.delete() #damit nur ein pp exestieren kann
         return super().save(*args, **kwargs)
+'''

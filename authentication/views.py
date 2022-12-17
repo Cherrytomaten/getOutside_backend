@@ -78,9 +78,27 @@ class ProfilePictureUpload(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
-        serializer = ProfilePictureSerializer(data=request.data, instance=request.user)
+        file = request.data
+        data = {
+            'profile_picture': file
+        }
+        serializer = UserSerializer(data=request.data, instance=request.user)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, *args, **kwargs):
+        instance = self.get_object()
+
+        if not instance:
+            return Response(
+                {"res": "Object with id does not exists"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        instance.delete()
+        return Response(
+            {"res": "Object deleted!"},
+            status=status.HTTP_200_OK
+        )
