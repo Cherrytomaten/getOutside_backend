@@ -15,7 +15,7 @@ class Mappoint(models.Model):
     created = models.DateTimeField(auto_now=True)
     # end = models.DateTimeField()
     notes = models.CharField(choices=CHOICES, max_length=100, default='Outdoor')
-    openingHours= models.TextField()
+    openingHours= models.JSONField(null=True)
     description = models.TextField()
     picture = models.TextField() #base64 string
     longitude = models.FloatField(max_length=10)

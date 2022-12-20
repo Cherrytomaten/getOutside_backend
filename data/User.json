@@ -98,5 +98,55 @@
             "first_name": "Mo",
             "last_name": "Farah"
         }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 111,
+        "fields": {
+            "username": "Bibi.B",
+            "email": "BB@mail.de",
+            "first_name": "Bibi",
+            "last_name": "Blocksberg"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 112,
+        "fields": {
+            "username": "Bertold.B",
+            "email": "Brecht@mail.de",
+            "first_name": "Bertold",
+            "last_name": "Brecht"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 113,
+        "fields": {
+            "username": "Jean.W",
+            "email": "JeanWe123@mail.de",
+            "first_name": "Jean",
+            "last_name": "We"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 114,
+        "fields": {
+            "username": "Friedi.H",
+            "email": "coolesGirl@mail.de",
+            "first_name": "Friedi",
+            "last_name": "Hirsch"
+        }
+    },
+    {
+        "model": "authentication.CustomUser",
+        "pk": 115,
+        "fields": {
+            "username": "Viv.P",
+            "email": "Vivienkannseinfach@mail.de",
+            "first_name": "Viv",
+            "last_name": "Precht"
+        }
     }
 ]

@@ -3,12 +3,22 @@
           "model": "get_outside.Mappoint",
           "pk": 1,
           "fields": {
-              "title": "Mappoint1",
-              "address": "Address1",
+              "title": "Bob MacQuarrie Skateboard Park (SK8 Extreme Park)",
+              "category": "1",
+              "address": "1490 Youville Drive",
               "created": "2018-11-20T15:58:44.767594-06:00",
-              "openingHours": "2018-11-20T15:58:44.767594-06:00",
-              "longitude": "13.404954",
-              "latitude": "52.520008",
+              "openingHours": {
+                "monday": "06:00 - 9:00",
+                "tuesday": "closed",
+                "wednesday": "18:00 - 22:00",
+                "thursday": "07:00 - 20:00",
+                "friday": "closed",
+                "saturday": "closed",
+                "sunday": "15:00 - 18:00"
+              },
+              "description": "Flat asphalt surface, 10 components, City run learn to skateboard programs, City run skateboard camps in summer",
+              "longitude": "13.355937",
+              "latitude": "52.480894",
               "ratings": "5.0"
           }
     },
@@ -16,12 +26,22 @@
           "model": "get_outside.Mappoint",
           "pk": 2,
           "fields": {
-              "title": "Mappoint2",
-              "address": "Address2",
+              "title": "Walter Baker Basketball Park",
+              "category": "2",
+              "address": "100 Charlie Rogers Place",
               "created": "2018-11-20T15:58:44.767594-06:00",
-              "openingHours": "2018-11-20T15:58:44.767594-06:00",
-              "longitude": "13.404955",
-              "latitude": "52.520009",
+              "openingHours": {
+                "monday": "closed",
+                "tuesday": "closed",
+                "wednesday": "07:00 - 20:00",
+                "thursday": "07:00 - 20:00",
+                "friday": "07:00 - 20:00",
+                "saturday": "07:00 - 20:00",
+                "sunday": "15:00 - 18:00"
+              },
+              "description": "Concrete bowl, 7,000 sq ft",
+              "longitude": "13.442307",
+              "latitude": "52.494056",
               "ratings": "5.0"
           }
     },
@@ -29,41 +49,414 @@
           "model": "get_outside.Mappoint",
           "pk": 3,
           "fields": {
-              "title": "Mappoint3",
-              "address": "Address3",
+              "title": "Roving Baskteball Park Location",
+              "category": "2",
+              "address": "2785 8th Line Road",
               "created": "2018-11-20T15:58:44.767594-06:00",
-              "openingHours": "2018-11-20T15:58:44.767594-06:00",
-              "longitude": "13.404956",
-              "latitude": "52.5200010",
+              "openingHours": {
+                "monday": "15:00 - 18:00",
+                "tuesday": "closed",
+                "wednesday": "15:00 - 18:00",
+                "thursday": "07:00 - 20:00",
+                "friday": "01:00 - 12:00",
+                "saturday": "07:00 - 20:00",
+                "sunday": "15:30 - 22:00"
+              },
+              "description": "Flat surface, 5 components, seperated by fences",
+              "longitude": "13.406163",
+              "latitude": "52.520057",
               "ratings": "5.0"
           }
     },
-  {
+    {
           "model": "get_outside.Mappoint",
           "pk": 4,
           "fields": {
-              "title": "Mappoint4",
-              "address": "Address4",
+              "title": "Roving volleyball Location",
+              "category": "3",
+              "address": "10 Warner Colpitts Lane",
               "created": "2018-11-20T15:58:44.767594-06:00",
-              "openingHours": "2018-11-20T15:58:44.767594-06:00",
-              "longitude": "13.404957",
-              "latitude": "52.520011",
+              "openingHours": {
+                "monday": "15:00 - 18:00",
+                "tuesday": "closed",
+                "wednesday": "07:00 - 20:00",
+                "thursday": "07:00 - 20:00",
+                "friday": "07:00 - 20:00",
+                "saturday": "closed",
+                "sunday": "15:00 - 18:00"
+              },
+              "description": "indoor, Flat surface, 9 components",
+              "longitude": "13.426163",
+              "latitude": "52.520057",
               "ratings": "5.0"
           }
     },
-  {
+    {
           "model": "get_outside.Mappoint",
           "pk": 5,
           "fields": {
-              "title": "Mappoint5",
-              "address": "Address5",
+              "title": "Legacy volleball Park",
+              "category": "3",
+              "address": "101 Centrepointe Drive",
               "created": "2018-11-20T15:58:44.767594-06:00",
-              "openingHours": "2018-11-20T15:58:44.767594-06:00",
-              "longitude": "13.404953",
-              "latitude": "52.520007",
+              "openingHours": {
+                "monday": "15:00 - 18:00",
+                "tuesday": "closed",
+                "wednesday": "07:00 - 20:00",
+                "thursday": "07:00 - 20:00",
+                "friday": "07:00 - 20:00",
+                "saturday": "closed",
+                "sunday": "15:00 - 18:00"
+              },
+              "description": "sand surface, 5 components",
+              "longitude": "13.426163",
+              "latitude": "52.510057",
               "ratings": "5.0"
           }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 6,
+        "fields": {
+            "title": "Greenboro Spa",
+            "category": "4",
+            "address": "3142 Conroy Road",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "11:00 - 20:00",
+              "tuesday": "closed",
+              "wednesday": "closed",
+              "thursday": "11:00 - 20:00",
+              "friday": "11:00 - 20:00",
+              "saturday": "11:00 - 20:00",
+              "sunday": "15:00 - 18:00"
+            },
+            "description": "Flat asphalt surface, 5 components",
+            "longitude": "13.426163",
+            "latitude": "52.524057",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 7,
+        "fields": {
+            "title": "Bridlewood Spa",
+            "category": "4",
+            "address": "65 Stonehaven Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "closed",
+              "tuesday": "11:00 - 20:00",
+              "wednesday": "closed",
+              "thursday": "11:00 - 20:00",
+              "friday": "11:00 - 18:00",
+              "saturday": "10:00 - 18:00",
+              "sunday": "15:00 - 18:00"
+            },
+            "description": "indoor, comfy seats, warm atmosphere",
+            "longitude": "13.426163",
+            "latitude": "52.528057",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 8,
+        "fields": {
+            "title": "Roving Parkour Park Location",
+            "category": "5",
+            "address": "100 Clifford Campbell Street",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "02:00 - 23:00",
+              "tuesday": "02:00 - 23:00",
+              "wednesday": "02:00 - 23:00",
+              "thursday": "02:00 - 23:00",
+              "friday": "02:00 - 23:00",
+              "saturday": "02:00 - 23:00",
+              "sunday": "02:00 - 23:00"
+            },
+            "description": "outdoor, Flat surface, infinity components",
+            "longitude": "13.428163",
+            "latitude": "52.528057",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 9,
+        "fields": {
+            "title": "Wolfsburg parkour  Park Location",
+            "category": "5",
+            "address": "110 Malvern Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "02:00 - 23:00",
+              "tuesday": "02:00 - 23:00",
+              "wednesday": "02:00 - 23:00",
+              "thursday": "02:00 - 23:00",
+              "friday": "02:00 - 23:00",
+              "saturday": "02:00 - 23:00",
+              "sunday": "02:00 - 23:00"
+            },
+            "description": "outdoor, smooth surface, 25 components",
+            "longitude": "13.355937",
+            "latitude": "52.485894",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 10,
+        "fields": {
+            "title": "Roving Skateboard Park Location",
+            "category": "1",
+            "address": "5660 Osgoode Main Street",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "08:00 - 20:00",
+              "tuesday": "08:00 - 20:00",
+              "wednesday": "08:00 - 20:00",
+              "thursday": "08:00 - 20:00",
+              "friday": "08:00 - 20:00",
+              "saturday": "12:00 - 20:00",
+              "sunday": "12:00 - 20:00"
+            },
+            "description": "outdoor, Rough surface, 66 components",
+            "longitude": "13.395937",
+            "latitude": "52.485893",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 11,
+        "fields": {
+            "title": "Charlie Bowins Handball",
+            "category": "6",
+            "address": "435 Bronson Avenue",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "08:00 - 20:00",
+              "tuesday": "closed",
+              "wednesday": "08:00 - 20:00",
+              "thursday": "10:00 - 21:00",
+              "friday": "closed",
+              "saturday": "17:00 - 20:00",
+              "sunday": "12:00 - 23:00"
+            },
+            "description": "outdoor, smooth surface, 2 playing fields",
+            "longitude": "13.367827",
+            "latitude": "52.513345",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 12,
+        "fields": {
+            "title": "Diamond Jubilee Skateboard Park",
+            "category": "1",
+            "address": "2810 Findlay Creek Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+              "monday": "08:00 - 20:00",
+              "tuesday": "10:00 - 21:00",
+              "wednesday": "08:00 - 20:00",
+              "thursday": "10:00 - 21:00",
+              "friday": "10:00 - 21:00",
+              "saturday": "10:00 - 21:00",
+              "sunday": "12:00 - 23:00"
+            },
+            "description": "outdoor, Flat concrete surface, 10 plus components (large half pipe), City run learn to skateboard programs",
+            "longitude": "13.367827",
+            "latitude": "52.513345",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 13,
+        "fields": {
+            "title": "Blackburn Skateboard Park",
+            "category": "1",
+            "address": "190 Glen Park Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "08:00 - 20:00",
+                "tuesday": "10:00 - 21:00",
+                "wednesday": "08:00 - 20:00",
+                "thursday": "10:00 - 21:00",
+                "friday": "10:00 - 21:00",
+                "saturday": "10:00 - 21:00",
+                "sunday": "12:00 - 23:00"
+            },
+            "description": "Flat asphalt surface, 5 components, City run skateboard camps in summer",
+            "longitude": "13.395532",
+            "latitude": "52.476764",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 14,
+        "fields": {
+            "title": "Goulbourn Spa",
+            "category": "4",
+            "address": "1500 Shea Road",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "10:00 - 21:00",
+                "tuesday": "10:00 - 21:00",
+                "wednesday": "closed",
+                "thursday": "closed",
+                "friday": "10:00 - 21:00",
+                "saturday": "10:00 - 21:00",
+                "sunday": "10:00 - 21:00"
+            },
+            "description": "outdoor, many trees, good air",
+            "longitude": "13.357305",
+            "latitude": "52.529453",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 15,
+        "fields": {
+            "title": "Manotick Skateboard Park",
+            "category": "1",
+            "address": "5572 Doctor Leach Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "08:00 - 20:00",
+                "tuesday": "10:00 - 21:00",
+                "wednesday": "08:00 - 20:00",
+                "thursday": "10:00 - 21:00",
+                "friday": "10:00 - 21:00",
+                "saturday": "10:00 - 21:00",
+                "sunday": "12:00 - 23:00"
+            },
+            "description": "outdoor, Flat asphalt surface, 8 components",
+            "longitude": "13.402843",
+            "latitude": "52.54462",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 16,
+        "fields": {
+            "title": "Pankow Tennis Park Location",
+            "category": "7",
+            "address": "1448 Meadow Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "08:00 - 20:00",
+                "tuesday": "08:00 - 20:00",
+                "wednesday": "08:00 - 20:00",
+                "thursday": "10:00 - 21:00",
+                "friday": "10:00 - 21:00",
+                "saturday": "10:00 - 21:00",
+                "sunday": "10:00 - 21:00"
+            },
+            "description": "Flat surface, 5555555555555 components",
+            "longitude": "13.393548",
+            "latitude": "52.567899",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 17,
+        "fields": {
+            "title": "Berrigan Tennis Park",
+            "category": "7",
+            "address": "51 Berrigan Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "08:00 - 20:00",
+                "tuesday": "08:00 - 20:00",
+                "wednesday": "08:00 - 20:00",
+                "thursday": "10:00 - 21:00",
+                "friday": "10:00 - 21:00",
+                "saturday": "10:00 - 21:00",
+                "sunday": "10:00 - 21:00"
+            },
+            "description": "outdoor, meadow fields, 5 playing fields",
+            "longitude": "13.331575",
+            "latitude": "52.549739",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 18,
+        "fields": {
+            "title": "EugÃne Martineau tennis Park",
+            "category": "7",
+            "address": "710 Mikinak Road",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "08:00 - 20:00",
+                "tuesday": "08:00 - 20:00",
+                "wednesday": "08:00 - 20:00",
+                "thursday": "10:00 - 21:00",
+                "friday": "10:00 - 21:00",
+                "saturday": "10:00 - 21:00",
+                "sunday": "10:00 - 21:00"
+            },
+            "description": "outdoor, 1 playing field",
+            "longitude": "13.392729",
+            "latitude": "52.560175",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 19,
+        "fields": {
+            "title": "Vista Speedball Park",
+            "category": "8",
+            "address": "720 Vistapark Drive",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "10:00 - 21:00",
+                "tuesday": "10:00 - 21:00",
+                "wednesday": "closed",
+                "thursday": "10:00 - 21:00",
+                "friday": "10:00 - 21:00",
+                "saturday": "closed",
+                "sunday": "closed"
+            },
+            "description": "outdoor and indoor, Flat surface, 5 components, Flat surface, 5 components",
+            "longitude": "13.443703",
+            "latitude": "52.555263",
+            "ratings": "5.0"
+        }
+    },
+    {
+        "model": "get_outside.Mappoint",
+        "pk": 20,
+        "fields": {
+            "title": "Schäfersee Lake & Park",
+            "category": "9",
+            "address": "Schäfersee 13407",
+            "created": "2018-11-20T15:58:44.767594-06:00",
+            "openingHours": {
+                "monday": "00:00 - 22:00",
+                "tuesday": "00:00 - 22:00",
+                "wednesday": "00:00 - 22:00",
+                "thursday": "00:00 - 22:00",
+                "friday": "00:00 - 22:00",
+                "saturday": "00:00 - 22:00",
+                "sunday": "00:00 - 22:00"
+            },
+            "description": "outdoor, clear water",
+            "longitude": "13.360863",
+            "latitude": "52.564507",
+            "ratings": "5.0"
+        }
     }
-
-
 ]

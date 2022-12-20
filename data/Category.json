@@ -1,0 +1,65 @@
+[
+    {
+        "model": "get_outside.Category",
+          "pk": 1,
+          "fields": {
+            "name": "Skateboard"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 2,
+          "fields": {
+            "name": "Basketball"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 3,
+          "fields": {
+            "name": "Volleyball"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 4,
+          "fields": {
+            "name": "Wellness"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 5,
+          "fields": {
+            "name": "Parkour"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 6,
+          "fields": {
+            "name": "Handball"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 7,
+          "fields": {
+            "name": "Tennis"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 7,
+          "fields": {
+            "name": "Speedball"
+          }
+    },
+    {
+        "model": "get_outside.Category",
+          "pk": 8,
+          "fields": {
+            "name": "Swimming"
+          }
+    }
+]
