@@ -6,7 +6,8 @@
             "username": "Yusra.M",
             "email": "YusraM@mail.de",
             "first_name": "Yusra",
-            "last_name": "Mardini"
+            "last_name": "Mardini",
+            "profile_picture": "/profile_pictures/Yusra.jpg"
         }
     },
     {
@@ -16,7 +17,8 @@
             "username": "Laura.D",
             "email": "LauraD@mail.de",
             "first_name": "Laura",
-            "last_name": "Dekker"
+            "last_name": "Dekker",
+            "profile_picture": "/profile_pictures/Laura.jpg"
         }
     },
     {
@@ -26,7 +28,8 @@
             "username": "Larissa.L",
             "email": "LarissaL@mail.de",
             "first_name": "Larissa",
-            "last_name": "Latynina"
+            "last_name": "Latynina",
+            "profile_picture": "/profile_pictures/Larissa.jpg"
         }
     },
     {
@@ -36,7 +39,8 @@
             "username": "Dawn.F",
             "email": "DawnF@mail.de",
             "first_name": "Dawn",
-            "last_name": "Fraser"
+            "last_name": "Fraser",
+            "profile_picture": "/profile_pictures/Dawn.jpg"
         }
     },
     {
@@ -46,7 +50,8 @@
             "username": "Junko.T",
             "email": "JunkoT@mail.de",
             "first_name": "Junko",
-            "last_name": "Tabei"
+            "last_name": "Tabei",
+            "profile_picture": "/profile_pictures/Junko.jpg"
         }
     },
     {
@@ -56,7 +61,8 @@
             "username": "Fanny.BK",
             "email": "FannyBK@mail.de",
             "first_name": "Fanny",
-            "last_name": "Blankers-Koen"
+            "last_name": "Blankers-Koen",
+            "profile_picture": "/profile_pictures/Fanny.jpg"
         }
     },
     {
@@ -66,7 +72,8 @@
             "username": "Mildred.D",
             "email": "MildredD@mail.de",
             "first_name": "Mildred",
-            "last_name": "Didrikson"
+            "last_name": "Didrikson",
+            "profile_picture": "/profile_pictures/Mildred.jpg"
         }
     },
     {
@@ -76,7 +83,8 @@
             "username": "Chris.M",
             "email": "ChrisM@mail.de",
             "first_name": "Chris",
-            "last_name": "Mosier"
+            "last_name": "Mosier",
+            "profile_picture": "/profile_pictures/Chris.jpg"
         }
     },
     {
@@ -86,7 +94,8 @@
             "username": "Kyle.M",
             "email": "KyleM@mail.de",
             "first_name": "Kyle",
-            "last_name": "Manard"
+            "last_name": "Manard",
+            "profile_picture": "/profile_pictures/Kyle.jpg"
         }
     },
     {
@@ -96,7 +105,8 @@
             "username": "Mo.F",
             "email": "MoF@mail.de",
             "first_name": "Mo",
-            "last_name": "Farah"
+            "last_name": "Farah",
+            "profile_picture": "/profile_pictures/Mo.jpg"
         }
     },
     {

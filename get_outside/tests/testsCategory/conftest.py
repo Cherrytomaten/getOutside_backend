@@ -1,7 +1,7 @@
 # from pytest_factoryboy import register
 # from .factories import CategoryFactory
 
-# Register Approach
+# # Register Approach
 
 # register(CategoryFactory)
 

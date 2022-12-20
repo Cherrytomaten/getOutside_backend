@@ -4,7 +4,7 @@ from .models import CustomUser
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
-#customizeToken
+# customizeToken
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @classmethod
@@ -12,13 +12,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super(MyTokenObtainPairSerializer, cls).get_token(user)
 
         # Add custom claims
-        token['username'] = user.username
-        token['first_name'] = user.first_name
-        token['last_name'] = user.last_name
+        # token['username'] = user.username
+        # token['first_name'] = user.first_name
+        # token['last_name'] = user.last_name
         return token
 
-class CustomUserSerializer(serializers.ModelSerializer):
 
+class CustomUserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True
     )
@@ -37,6 +37,15 @@ class CustomUserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class UserSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.ImageField(required=False)
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'first_name', 'last_name', 'email', 'profile_picture']
+
 
 class ChangePasswordSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
@@ -74,6 +83,8 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
 class UpdateUserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
 
+    # profile_picture = serializers.ImageField(required=False)
+
     class Meta:
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email')
@@ -100,8 +111,17 @@ class UpdateUserSerializer(serializers.ModelSerializer):
         instance.last_name = validated_data['last_name']
         instance.email = validated_data['email']
         instance.username = validated_data['username']
-        #add other attributes...
+        # instance.profile_picture = validated_data['profile_picture']
+        # add other attributes...
 
         instance.save()
 
         return instance
+
+
+class ProfilePictureSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.ImageField()
+
+    class Meta:
+        model = CustomUser
+        fields = ["id", "profile_picture"]
