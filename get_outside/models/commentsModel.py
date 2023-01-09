@@ -1,11 +1,14 @@
+import uuid
+
 from django.db import models
 from authentication.models import CustomUser
 from get_outside.models.mappointModel import Mappoint
 
-class Comment(models.Model):
 
-    mappoint_id = models.ForeignKey(Mappoint, related_name='comments', default=0, on_delete= models.CASCADE)
-    author_id = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE) # oder SET() ???
+class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    mappoint_id = models.ForeignKey(Mappoint, related_name='comments', default=0, on_delete=models.CASCADE)
+    author_id = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)  # oder SET() ???
     created_at = models.DateTimeField(auto_now=True)
     text = models.CharField(max_length=255, blank=True)
 
