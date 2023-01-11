@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 # ViewSets define the view behavior.
 class MappointViewSet(APIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
 
     def detail_view(self, pk):
         try:
@@ -32,11 +32,11 @@ class MappointViewSet(APIView):
         data_request = JSONParser().parse(request)
         serializer = MappointSerializer(data=data_request)
         if serializer.is_valid():
-            activity = serializer.save()
-            if activity:
+            point = serializer.save(creator_id=self.request.user.id)
+            if point:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
-            return Response(json, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Admin/ User?
@@ -57,7 +57,6 @@ class MappointViewSet(APIView):
         deleteItem = get_object_or_404(Mappoint, pk=pk)
         deleteItem.delete()
         return Response(
-          #  'message': 'Todo Deleted Successfully',
             status=status.HTTP_200_OK)
 
 

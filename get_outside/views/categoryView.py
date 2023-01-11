@@ -6,14 +6,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
 from rest_framework.parsers import JSONParser
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.shortcuts import get_object_or_404
 
 # ViewSets define the view behavior.
 class CategoryViewSet(APIView):
     get_serializer= CategorySerializer
 
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
+
 # detailed View only admin
     def detail_view(self, id):
         try:
@@ -43,6 +44,7 @@ class CategoryViewSet(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CategoryViewSet2(APIView):
+    permission_classes = (IsAuthenticated,)
 
 
     def put(self, request, pk , format='json'):
