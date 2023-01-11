@@ -10,8 +10,3 @@ class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
-
-    # def create(self, validated_data):
-    #     user = validated_data.user
-    #     print(user)
-    #     return Comment.objects.create(validated_data, author_id=user)
