@@ -1,14 +1,15 @@
 ## GetOutside Django Backend, Nextjs Project
-Projekt
+Projekt WiSe 2022/2023
 Gruppe: Cherrytomaten
 
 ## Table of Contents
 1. [Ziele des Projekts](#ziele-des-projekts)
 2. [Autoren](#autoren)
 3. [Installation](#installation)
-4. [Commiting](#commiting)
-4. [Pulling](#pulling)
-4. [Merging](#merging)
+4. [Start](#start-des-projekts)
+5. [Abhängigkeiten](#abhängigkeiten)
+6. [Tools](#tools)
+
 
 ## Ziele des Projekts
 • Web-Applikation zum Thema (Outdoor)-Sport
@@ -27,6 +28,21 @@ A little intro about the installation.
 
 $ git clone https://gitlab.bht-berlin.de/s92559/awfu_devups.git
 $ cd ../path/to/the/file
+
+## Start des Projekts
+to make sure all migrations are correct:
+
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py runserver
+
+
+## Abhängigkeiten
+
+## Tools
+(zB node, npm, yarn, python, einschränkungen wie versionen, DB-Backend, usw)
+
+
 
 ## Commiting
 Please use the following flow structure to commit to this repo:
