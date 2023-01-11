@@ -26,7 +26,7 @@ Lilian Alice Drabinski, Josefine Hoppe, Emilia Dörschmann, Adham Elgendy, Marlo
 ## Installation
 A little intro about the installation.
 
-$ git clone https://gitlab.bht-berlin.de/s92559/awfu_devups.git
+$ git clone https://github.com/Cherrytomaten/getOutside_backend.git
 $ cd ../path/to/the/file
 
 ## Start des Projekts
