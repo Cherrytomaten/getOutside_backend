@@ -35,23 +35,12 @@ class CommentsViewSet(APIView):
 
     def delete(self, request, pk):
         comment = get_object_or_404(Comment, pk=pk)
-        comment.delete()
-        return Response(
-            status=status.HTTP_200_OK)
-
-    def put(self, request, pk):
-        comment = get_object_or_404(Comment, pk=pk)
-        serializer = CommentsSerializer(data=request.data)
-        if comment:
-            comment.text = serializer.text # sth so dass Text von Comment bearbeitet werden kann
-        return HttpResponse("comment updated")
-    #   serializer= MappointSerializer(instance = object, data=data_request, partial=True)
-    #     if serializer.is_valid():
-    #         activity = serializer.save()
-    #         if activity:
-    #             json = serializer.data
-    #             return Response(json, status=status.HTTP_200_OK)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        userCreatedComment = comment.author_id
+        user_id = self.request.user.id
+        if user_id == userCreatedComment:
+            comment.delete()
+            return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     def get(self, request):
         # comment = get_object_or_404(Comment, id = id)
