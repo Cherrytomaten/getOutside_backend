@@ -21,6 +21,7 @@ class FavoritePinView(APIView):
             'pin': request.data.get('pin'),  # pin id
             'user': request.user.id
         }
+
         already_exists = FavoritePins.objects.filter(pin=request.data.get('pin'), user=request.user.id)
         if already_exists:
             return Response({"res": "Object already your favorite!"}, status=status.HTTP_400_BAD_REQUEST)

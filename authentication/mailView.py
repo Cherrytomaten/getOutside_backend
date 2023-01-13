@@ -13,7 +13,7 @@ class ConfirmEmail(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-        activate_link_url = 'http://127.0.0.1:8000/authentication/user/activate/'  # TODO: Frontend route zum aktivieren
+        activate_link_url = 'https://www.get-outside-app.de/confirm-email'  # TODO: Frontend route zum aktivieren
         email = request.data.get('email')
         print(email)
         if CustomUser.objects.filter(email=email).exists():
@@ -69,7 +69,7 @@ class ResetPassword(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-        activate_link_url = 'http://127.0.0.1:8000/authentication/user/password/reset/'  # TODO: Frontend route zum aktivieren
+        activate_link_url = 'https://www.get-outside-app.de/reset-password'  # TODO: Frontend route zum aktivieren
         email = request.data.get('email')
         if CustomUser.objects.filter(email=email).exists():
             user = CustomUser.objects.get(email=email)
