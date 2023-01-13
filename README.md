@@ -1,14 +1,15 @@
 ## GetOutside Django Backend, Nextjs Project
-Projekt
+Projekt WiSe 2022/2023
 Gruppe: Cherrytomaten
 
 ## Table of Contents
 1. [Ziele des Projekts](#ziele-des-projekts)
 2. [Autoren](#autoren)
 3. [Installation](#installation)
-4. [Commiting](#commiting)
-4. [Pulling](#pulling)
-4. [Merging](#merging)
+4. [Start](#start-des-projekts)
+5. [Abhängigkeiten](#abhängigkeiten)
+6. [Tools](#tools)
+
 
 ## Ziele des Projekts
 • Web-Applikation zum Thema (Outdoor)-Sport
@@ -25,8 +26,38 @@ Lilian Alice Drabinski, Josefine Hoppe, Emilia Dörschmann, Adham Elgendy, Marlo
 ## Installation
 A little intro about the installation.
 
-$ git clone https://gitlab.bht-berlin.de/s92559/awfu_devups.git
+$ git clone https://github.com/Cherrytomaten/getOutside_backend.git
 $ cd ../path/to/the/file
+
+## Start des Projekts
+1. Virtual Environment  
+einen Ordner für virtual Environment anlegen. Entweder per Console:  
+python -m venv venv  
+Oder per Settings der IDE. Je nach IDE variiert der Pfad. Zum Beispiel unter getOutside_backend oder getOutside_backend/Backend "venv" anlegen.
+Dann virtual Environment activieren mit:  
+python venv\Scripts\activate  
+wenn das nicht funktioniert, kann es helfen mit cd in den Ordner Scripts zu wechsel und so zu aktivieren:  
+python . activate  
+(Leerzeichen ist wichtig)
+
+2. Abhängikeiten installieren  
+pip install -r ./requirements.txt
+
+3. to make sure all migrations are correct:  
+$ python manage.py makemigrations  
+$ python manage.py migrate  
+
+4. Server starten   
+python manage.py runserver
+
+## Abhängigkeiten
+alle Abhängigkeiten werden beim Starten des Projekts mit den requirements installiert. 
+
+
+## Tools
+(zB node, npm, yarn, python, einschränkungen wie versionen, DB-Backend, usw)
+
+
 
 ## Commiting
 Please use the following flow structure to commit to this repo:
