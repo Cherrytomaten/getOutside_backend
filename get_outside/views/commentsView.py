@@ -10,22 +10,16 @@ from rest_framework.parsers import JSONParser
 from get_outside.models.commentsModel import Comment
 
 # ViewSets define the view behavior.
-
-class CommentsViewSet(APIView):
-    # queryset = Comment.objects.all()
-    # serializer_class = commentsSerializer
-    
+class CommentsViewSet(APIView):    
     permission_classes = (permissions.AllowAny,)
     # permission_classes = (permissions.IsAuthenticated,)
-
 
     def post(self, request, format='json'):
         data_request=JSONParser().parse(request)
         print(request)
         serializer = CommentsSerializer(data=data_request)
         if serializer.is_valid():
-            comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=self.request.) 
-                
+            comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=self.request.)   
             if comment:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
@@ -43,7 +37,6 @@ class CommentsViewSet(APIView):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     def get(self, request):
-        # comment = get_object_or_404(Comment, id = id)
         comment = Comment.objects.all()
         serializer = CommentsSerializer(comment, many=True)
         if comment:
