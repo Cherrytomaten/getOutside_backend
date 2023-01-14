@@ -10,6 +10,6 @@ def upload_to(instance, filename):
 
 
 class CustomUser(AbstractUser):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    id = models.UUIDField(primary_key=True, editable=False)
     fav_activity = models.CharField(blank=True, max_length=120)
     profile_picture = models.ImageField(upload_to=upload_to, blank=True, null=True)

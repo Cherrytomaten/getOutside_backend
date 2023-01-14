@@ -31,6 +31,7 @@ class Mappoint(models.Model):
     latitude = models.FloatField(max_length=10)
     creator_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     ratings = models.FloatField(max_length=20)
+    visitor = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
