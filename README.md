@@ -30,6 +30,7 @@ $ git clone https://github.com/Cherrytomaten/getOutside_backend.git
 $ cd ../path/to/the/file
 
 ## Start des Projekts
+
 1. Virtual Environment  
 einen Ordner für virtual Environment anlegen. Entweder per Console:  
 python -m venv venv  
@@ -52,7 +53,6 @@ python manage.py runserver
 
 ## Abhängigkeiten
 alle Abhängigkeiten werden beim Starten des Projekts mit den requirements installiert. 
-
 
 ## Tools
 (zB node, npm, yarn, python, einschränkungen wie versionen, DB-Backend, usw)
