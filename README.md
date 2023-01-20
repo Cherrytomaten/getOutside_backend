@@ -42,19 +42,18 @@ Oder per Settings der IDE. Je nach IDE variiert der Pfad. Zum Beispiel unter get
 wenn das nicht funktioniert, kann es helfen mit cd in den Ordner Scripts zu wechsel und so zu aktivieren:  
 > `python . activate` (Leerzeichen ist wichtig)
 
-2. Abhängikeiten installieren  
+3. Abhängikeiten installieren  
 > `pip install -r ./requirements.txt`
 
-3. to make sure all migrations are correct:  
+5. to make sure all migrations are correct:  
 > `python manage.py makemigrations` 
 > `python manage.py migrate` 
 
-4. Server starten   
+5. Server starten   
 > `python manage.py runserver`
 
 ## Abhängigkeiten
 alle Abhängigkeiten werden beim Starten des Projekts mit den requirements installiert. 
-
 
 ## Tools
 Tools, die wir im Backend verwendet haben sind: 

@@ -45,6 +45,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)  # as long as the fields are the same, we can just use this
+        instance.is_active = False
         if password is not None:
             instance.set_password(password)
         instance.save()

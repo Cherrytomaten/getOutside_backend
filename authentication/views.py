@@ -1,17 +1,23 @@
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
 from rest_framework.generics import UpdateAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status, permissions, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.parsers import MultiPartParser, FormParser
+
+from Backend import settings
 from .models import CustomUser
 from .serializers import CustomUserSerializer, ChangePasswordSerializer, MyTokenObtainPairSerializer, \
     UpdateUserSerializer, UserSerializer, ProfilePictureSerializer
 
-
 # custom token
+from .token import account_activation_token
+
+
 class ObtainTokenPairView(TokenObtainPairView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = MyTokenObtainPairSerializer
@@ -88,7 +94,6 @@ class ProfilePictureUpload(UpdateAPIView):
 class ProfilePictureUpload(APIView):
     parser_classes = [MultiPartParser, FormParser]
     permission_classes = [IsAuthenticated]
-
 
     def put(self, pk, request, format=None):
 
