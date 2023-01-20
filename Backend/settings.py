@@ -88,18 +88,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Backend.wsgi.application'
 
 # Database Develpopment
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Database Production
 
-DATABASES = {
-}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {
+# }
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
