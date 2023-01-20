@@ -11,15 +11,14 @@ from get_outside.models.commentsModel import Comment
 
 # ViewSets define the view behavior.
 class CommentsViewSet(APIView):    
-    permission_classes = (permissions.AllowAny,)
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, format='json'):
         data_request=JSONParser().parse(request)
         print(request)
         serializer = CommentsSerializer(data=data_request)
         if serializer.is_valid():
-            comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=self.request.)   
+            comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=self.request.??)   
             if comment:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
