@@ -1,3 +1,5 @@
+import math
+
 from rest_framework import routers, serializers, viewsets, status, permissions
 from get_outside.serializers.serializers import MappointSerializer, ImageSerializer
 from django.contrib.auth.models import User
@@ -7,6 +9,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from django_filters import rest_framework as filters
 
 
 # ViewSets define the view behavior.
@@ -19,13 +22,24 @@ class MappointViewSet(APIView):
         except Mappoint.DoesNotExist:
             return Response(MappointSerializer.errors, status=status.HTTP_404_NOT_FOUND)
 
-    def get(self, request, pk=None, format=None):
+    def get(self, request, pk=None, format=None, lat=None, long=None, radius=None):
         if pk:
             data = self.detail_view(pk)
             serializer = MappointSerializer(data)
         else:
-            data = Mappoint.objects.all()
-            serializer = MappointSerializer(data, many=True)
+            if lat and long and radius:
+                earth = 6378.137  #radius of the earth in kilometer
+                pi = 3.14159
+                m = (1 / ((2 * pi / 360) * earth)) / 1000  #1 meter in degree
+                # var new_longitude = longitude + (your_meters * m) / cos(latitude * (pi / 180));
+                long_threshold_west = long - (radius * m) / math.cos(lat * (pi/180))
+                long_threshold_ost = long + (radius * m) / math.cos(lat * (pi /180))
+                lat_threshold_north = lat + radius * m
+                lat_threshold_south = lat - radius * m
+                data = Mappoint.objects.all().filter(longitude__gte=long_threshold_west).filter(longitude__lte=long_threshold_ost).filter(latitude__lte=lat_threshold_north).filter(latitude__gte=lat_threshold_south)
+                serializer = MappointSerializer(data, many=True)
+            else:
+                return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
         return Response(serializer.data)
 
     def post(self, request, format='json'):

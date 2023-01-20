@@ -2,6 +2,7 @@ import os
 import uuid
 
 from django.db import models
+from django_filters import rest_framework as filters
 
 from Backend import settings
 from authentication.models import CustomUser
@@ -37,6 +38,23 @@ class Mappoint(models.Model):
 
     class Meta:
         ordering = ["-created"]
+
+'''
+class RadiusFilter(filters.FilterSet):
+    radiusLong = filters.NumberFilter(
+        field_name='longitude', method='get_distance_for_longitude', label="dis_long")
+    
+    radiusLat = filters.NumberFilter(
+        field_name='latitude', method='get_distance_for_latitude', label="dis_lat")
+
+    def get_distance_for_longitude(self, queryset, field_name, value):
+
+        time_threshold = timezone.now() - timedelta(hours=int(value))
+        return queryset.filter(time_stamp__gte=time_threshold)
+
+    class Meta:
+        model = Mappoint
+        fields = ('hours',)'''
 
 
 class Images(models.Model):
