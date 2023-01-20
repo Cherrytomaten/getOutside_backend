@@ -52,3 +52,10 @@ class Images(models.Model):
     def delete(self, *args, **kwargs):
         os.remove(os.path.join(settings.MEDIA_ROOT, self.image.name))
         super(Images, self).delete(*args, **kwargs)
+
+class Ratings(models.Model):
+    rating = models.IntegerField(blank=True, null=True)
+    mappoint = models.ForeignKey('Mappoint', related_name='rating', on_delete=models.CASCADE, )
+
+    def __str__(self):
+        return self.id
