@@ -12,9 +12,8 @@ from get_outside.models.commentsModel import Comment
 # ViewSets define the view behavior.
 
 class CommentsViewSet(APIView):
-    # queryset = Comment.objects.all()
-    # serializer_class = commentsSerializer
-    permission_classes = (permissions.AllowAny,)
+
+    permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, format='json'):
         data_request=JSONParser().parse(request)
