@@ -18,7 +18,7 @@ class CommentsViewSet(APIView):
         print(request)
         serializer = CommentsSerializer(data=data_request)
         if serializer.is_valid():
-            comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=self.request.??)   
+            comment = serializer.save(author_id=self.request.user.id, mappointPin_id=self.request.uuid)    
             if comment:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
