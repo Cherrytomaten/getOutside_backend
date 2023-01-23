@@ -37,11 +37,31 @@ $ python manage.py migrate
 $ python manage.py runserver
 
 
+1. Virtual Environment  
+einen Ordner für virtual Environment anlegen. Entweder per Console:  
+python -m venv venv  
+Oder per Settings der IDE. Je nach IDE variiert der Pfad. Zum Beispiel unter getOutside_backend oder getOutside_backend/Backend "venv" anlegen.
+Dann virtual Environment activieren mit:  
+python venv\Scripts\activate  
+wenn das nicht funktioniert, kann es helfen mit cd in den Ordner Scripts zu wechsel und so zu aktivieren:  
+python . activate  
+(Leerzeichen ist wichtig)
+
+2. Abhängikeiten installieren  
+pip install -r ./requirements.txt
+
+3. to make sure all migrations are correct:  
+$ python manage.py makemigrations  
+$ python manage.py migrate  
+
+4. Server starten   
+python manage.py runserver
+
 ## Abhängigkeiten
+alle Abhängigkeiten werden beim Starten des Projekts mit den requirements installiert. 
 
 ## Tools
 (zB node, npm, yarn, python, einschränkungen wie versionen, DB-Backend, usw)
-
 
 
 ## Commiting

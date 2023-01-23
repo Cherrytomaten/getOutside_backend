@@ -30,9 +30,22 @@ class CustomUserSerializer(serializers.ModelSerializer):
         fields = ('email', 'username', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
+    def validate_username(self, value):
+        ModelClass = self.Meta.model
+        if ModelClass.objects.filter(username=value).exists():
+            raise serializers.ValidationError('username already exists')
+        return value
+
+    def validate_email(self, value):
+        ModelClass = self.Meta.model
+        if ModelClass.objects.filter(email=value).exists():
+            raise serializers.ValidationError('email already exists')
+        return value
+
     def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)  # as long as the fields are the same, we can just use this
+        instance.is_active = False
         if password is not None:
             instance.set_password(password)
         instance.save()
