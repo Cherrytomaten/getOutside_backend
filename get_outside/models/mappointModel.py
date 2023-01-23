@@ -2,7 +2,7 @@ import os
 import uuid
 
 from django.db import models
-from django_filters import rest_framework as filters
+# from django_filters import rest_framework as filters
 
 from Backend import settings
 from authentication.models import CustomUser
@@ -30,7 +30,7 @@ class Mappoint(models.Model):
     # picture = models.TextField()  # base64 string
     longitude = models.FloatField(max_length=10)
     latitude = models.FloatField(max_length=10)
-    creator_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     ratings = models.FloatField(max_length=20)
 
     def __str__(self):

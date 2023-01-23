@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django_filters import rest_framework as filters
+#from django_filter import rest_framework as filter
 
 
 # ViewSets define the view behavior.
@@ -27,7 +27,9 @@ class MappointViewSet(APIView):
             data = self.detail_view(pk)
             serializer = MappointSerializer(data)
         else:
-            if lat and long and radius:
+            # muss man nicht erstmal aus dem request/ header lat, long und radius rauslesen oder macht der das automatisch so?
+            # location = lat, long
+            if  lat and long and radius:
                 earth = 6378.137  #radius of the earth in kilometer
                 pi = 3.14159
                 m = (1 / ((2 * pi / 360) * earth)) / 1000  #1 meter in degree
