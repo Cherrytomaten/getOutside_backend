@@ -39,7 +39,6 @@ class MappointViewSet(APIView):
             return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Admin/ User?
     def put(self, request, pk, format='json'):
         object = get_object_or_404(Mappoint, pk=pk)
         data_request = JSONParser().parse(request)

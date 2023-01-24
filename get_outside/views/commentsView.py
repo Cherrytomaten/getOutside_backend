@@ -10,7 +10,8 @@ from rest_framework.parsers import JSONParser
 from get_outside.models.commentsModel import Comment
 
 # ViewSets define the view behavior.
-class CommentsViewSet(APIView):    
+class CommentsViewSet(APIView):
+
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, format='json'):
