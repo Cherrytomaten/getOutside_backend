@@ -30,7 +30,7 @@ class Mappoint(models.Model):
     longitude = models.FloatField(max_length=10)
     latitude = models.FloatField(max_length=10)
     creator_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    ratings = models.FloatField(max_length=20)
+    ratings = models.FloatField(max_length=20, null=True)
 
     def __str__(self):
         return self.title
@@ -54,8 +54,9 @@ class Images(models.Model):
         super(Images, self).delete(*args, **kwargs)
 
 class Ratings(models.Model):
-    rating = models.IntegerField(blank=True, null=True)
-    mappoint = models.ForeignKey('Mappoint', related_name='rating', on_delete=models.CASCADE, )
+    rating = models.IntegerField(blank=True, null=True,)
+    mappoint = models.ForeignKey('Mappoint', related_name='rating', on_delete=models.CASCADE,)
+    # creator_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.id

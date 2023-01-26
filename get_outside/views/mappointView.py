@@ -1,6 +1,7 @@
 from rest_framework import routers, serializers, viewsets, status, permissions
-from get_outside.serializers.serializers import MappointSerializer, ImageSerializer
+from get_outside.serializers.serializers import MappointSerializer, ImageSerializer, RatingSerializer
 from django.contrib.auth.models import User
+from django.db.models import Avg
 from get_outside.models.mappointModel import Mappoint, Images, Ratings
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -100,17 +101,40 @@ class UploadImage(APIView):
 
 class RatingViewSet(APIView):
     queryset = Ratings.objects.all()
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     parser_classes = (MultiPartParser, FormParser)
 
     def post(self, request, pk, *args, **kwargs):
-        value = request
-        data = {
-            'rating': value,
-            'mappoint': pk
-        }
-        serializer = ImageSerializer(data=data, partial=True)
+        data_request = JSONParser().parse(request)
+        serializer = RatingSerializer(data=data_request)
         if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+            value = serializer.save()
+            if value:
+                json = serializer.data
+                return Response(json, status=status.HTTP_201_CREATED)
+            return Response(json, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request, pk):
+        if pk:  
+            try:
+                #all_ratings = []
+                '''all_ratings = Ratings.objects.all().filter(mappoint=pk).values('rating')
+                for value in all_ratings:
+                    sum =+ value
+                average = sum / all_ratings.__len__'''
+                average = Ratings.objects.all().filter(mappoint=pk).aggregate(Avg('rating'))
+                print(average)
+                #serializer = RatingSerializer(average, many=True)
+                return Response(average, status=status.HTTP_200_OK)
+            except Ratings.DoesNotExist:
+                return None
+        else:
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+
+    def delete(self,request, pk):
+        deleteItem = get_object_or_404(Ratings, pk=pk)
+        deleteItem.delete()
+        return Response(
+          #  'message': 'Todo Deleted Successfully',
+            status=status.HTTP_200_OK)
