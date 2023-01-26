@@ -6,6 +6,7 @@ from ..models.categoryModel import Category
 from ..models.mappointModel import Mappoint, Images, Ratings
 from get_outside.serializers.commentsSerializer import CommentsSerializer
 
+
 class ImageSerializer(serializers.ModelSerializer):
     image = serializers.ImageField()
 
@@ -23,7 +24,7 @@ class RatingSerializer(serializers.ModelSerializer):
 
 # Serializers define the API representation.
 class MappointSerializer(serializers.ModelSerializer):
-    comments = CommentsSerializer(many=True, required=False)
+    # comments = CommentsSerializer(many=True, required=False)
     image = ImageSerializer(many=True, required=False)
 
     class Meta:
@@ -32,11 +33,6 @@ class MappointSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Mappoint.objects.create(**validated_data)
-
-    # def update(self, instance, validated_data):
-    #     instance.name = validated_data.get('name', instance.name)
-    #     instance.save()
-    #     return instance
 
 
 # Serializers define the API representation.

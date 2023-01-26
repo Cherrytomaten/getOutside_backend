@@ -1,10 +1,18 @@
 import os
 import uuid
+from random import randrange
 
 from django.db import models
 
 from authentication.models import CustomUser
 from Backend import settings
+
+
+def key_generator():
+    key = randrange(100, 100000)
+    if CustomUser.objects.filter(id=key).exists():
+        key = key_generator()
+    return key
 
 
 def upload_to(instance, filename):
@@ -17,9 +25,10 @@ class Mappoint(models.Model):
         ('Indoor', 'Indoor Activity'),
         ('Out & In', 'Outdoor and Indoor Activity'),
     )
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    #id = models.IntegerField(primary_key=True, default=key_generator, unique=True)
     title = models.CharField(max_length=30)
-    category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True) #default=0
     address = models.TextField()
     created = models.DateTimeField(auto_now=True)
     # end = models.DateTimeField()
@@ -29,8 +38,7 @@ class Mappoint(models.Model):
     # picture = models.TextField()  # base64 string
     longitude = models.FloatField(max_length=10)
     latitude = models.FloatField(max_length=10)
-    creator_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    ratings = models.FloatField(max_length=20, null=True)
+    creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True) 
 
     def __str__(self):
         return self.title
