@@ -59,3 +59,5 @@ logs/*
 .coverage
 .idea/
 *.DS_STORE
+
+.env
