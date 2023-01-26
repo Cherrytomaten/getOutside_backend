@@ -12,10 +12,8 @@ from django.shortcuts import get_object_or_404
 # ViewSets define the view behavior.
 class CategoryViewSet(APIView):
     get_serializer= CategorySerializer
-
     permission_classes = (IsAuthenticated,)
 
-# detailed View only admin
     def detail_view(self, id):
         try:
             return get_object_or_404(Category, id=id)
@@ -66,6 +64,4 @@ class CategoryViewSet2(APIView):
     def delete(self, request, pk, format='json'):
         deleteItem = get_object_or_404(Category, pk=pk)
         deleteItem.delete()
-        return Response(
-          #  'message': 'Todo Deleted Successfully',
-        status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
