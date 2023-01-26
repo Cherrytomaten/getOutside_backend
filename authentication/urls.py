@@ -1,7 +1,9 @@
+from django.template.defaulttags import url
 from django.urls import path
 from rest_framework_simplejwt import views as jwt_views
 from authentication.views import CustomUserCreate, LogoutAndBlacklistRefreshTokenForUserView, ChangePasswordView, \
     UpdateProfileView, ObtainTokenPairView, UserView, ProfilePictureUpload
+from authentication.mailView import ConfirmEmail, ActivateUser, ResetPassword
 
 urlpatterns = [
     path('token/obtain/', ObtainTokenPairView.as_view(), name='token_create'),  # override sjwt stock token
@@ -12,4 +14,7 @@ urlpatterns = [
     path('user/data/<int:pk>/', UpdateProfileView.as_view(), name="change_data"),
     path('user/', UserView.as_view(), name="get_user"),
     path('user/upload/<int:pk>', ProfilePictureUpload.as_view(), name="uploadProfilePicture"),
+    path('user/confirm-email/', ConfirmEmail.as_view(), name="confirmEmail"),
+    path('user/activate/', ActivateUser.as_view(), name="activateUser"),
+    path('user/password/reset/', ResetPassword.as_view(), name="resetPassword")
 ]

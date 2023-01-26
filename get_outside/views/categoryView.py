@@ -6,13 +6,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
 from rest_framework.parsers import JSONParser
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAdminUser
 from django.shortcuts import get_object_or_404
 
-# ViewSets define the view behavior.
+# ViewSets define the view behavior. Only Admin can CRUD Category
 class CategoryViewSet(APIView):
     get_serializer= CategorySerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAdminUser,)
 
     def detail_view(self, id):
         try:
@@ -42,9 +42,7 @@ class CategoryViewSet(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CategoryViewSet2(APIView):
-    permission_classes = (IsAuthenticated,)
-
-
+    permission_classes = (IsAdminUser,)
     def put(self, request, pk , format='json'):
         object = get_object_or_404(Category, pk=pk)
         data_request = JSONParser().parse(request)

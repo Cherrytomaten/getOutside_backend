@@ -8,4 +8,4 @@ class FavoritePinSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FavoritePins
-        fields = ["pin", "user"]
+        fields = ["pin"]
