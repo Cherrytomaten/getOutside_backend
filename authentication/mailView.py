@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from authentication.models import CustomUser
-from authentication.serializers import ChangePasswordSerializer
+from authentication.serializers import ResetPasswordSerializer
 from authentication.token import account_activation_token
 
 
@@ -16,6 +16,8 @@ class ConfirmEmail(APIView):
         activate_link_url = 'https://www.get-outside-app.de/confirm-email'  # TODO: Frontend route zum aktivieren
         email = request.data.get('email')
         print(email)
+        if not email:
+            return Response({'error': 'email is empty'}, status=400)
         if CustomUser.objects.filter(email=email).exists():
             print('HI')
             user = CustomUser.objects.get(email=email)
@@ -25,7 +27,7 @@ class ConfirmEmail(APIView):
             confirmation_token = token[0]
 
             print(confirmation_token)
-            link = f'{activate_link_url}?user_id={user.id}&user_mail={email}&confirmation_token={confirmation_token}'  # link erstellen
+            link = f'{activate_link_url}?user_uuid={user.uuid}&user_mail={email}&confirmation_token={confirmation_token}'  # link erstellen
 
             subject = "Welcome to GetOutside :)"
             text = f'Hello {user.username} :) please confirm your email using the following link: {link}'  # TODO: email tamplate einbauen, damit die mail schön ausieht
@@ -48,8 +50,8 @@ class ActivateUser(APIView):
         confirmation_token = request.GET.get('confirmation_token')
         # token = request.data.get('confirmation_token')
         print(confirmation_token)
-        user_id = request.GET.get('user_id')
-        user_mail = request.GET.get('user_mail')
+        user_id = request.data.get('user_id')
+        user_mail = request.data.get('user_mail')
         # user_id = request.data('user_id')
         print(user_mail)
         try:
@@ -71,12 +73,14 @@ class ResetPassword(APIView):
     def post(self, request):
         activate_link_url = 'https://www.get-outside-app.de/reset-password'  # TODO: Frontend route zum aktivieren
         email = request.data.get('email')
+        if not email:
+            return Response({'error': 'email is empty'}, status=400)
         if CustomUser.objects.filter(email=email).exists():
             user = CustomUser.objects.get(email=email)
             token = account_activation_token.make_token(user),  # token erzeugen
             confirmation_token = token[0]
             print(confirmation_token)
-            link = f'{activate_link_url}?user_id={user.id}&user_mail={email}&confirmation_token={confirmation_token}'  # link erstellen
+            link = f'{activate_link_url}?user_id={user.uuid}&user_mail={email}&confirmation_token={confirmation_token}'  # link erstellen
 
             subject = "Reset Password "
             text = f'Hello {user.username}, use the following link to reset your password: {link}'  # TODO: email tamplate einbauen, damit die mail schön ausieht
@@ -92,13 +96,12 @@ class ResetPassword(APIView):
             return Response({'error': 'user with this email not found!'}, status=400)
 
     def put(self, request):
-        token = request.GET.get('confirmation_token')
+
+        token = request.data.get('confirmation_token')
         # token = request.data.get('confirmation_token')
-        print(token)
-        user_id = request.GET.get('user_id')
-        user_mail = request.GET.get('user_mail')
+        user_id = request.data.get('user_id')
+        user_mail = request.data.get('user_mail')
         # user_id = request.data('user_id')
-        print(user_mail)
         try:
             user = CustomUser.objects.get(email=user_mail)
         except CustomUser.DoesNotExist:
@@ -107,11 +110,10 @@ class ResetPassword(APIView):
             user.is_active = True
             # password change here in serializer, find old password first
             data = {
-                'password':  request.data('password'),
-                'password2': request.data('password2'),
-                'old_password': user.password
+                'password':  request.data.get('password'),
+                'password2': request.data.get('password2'),
             }
-            serializer = ChangePasswordSerializer(data)
+            serializer = ResetPasswordSerializer(data=data)
             if serializer.is_valid():
                 user = serializer.save()
                 if user:

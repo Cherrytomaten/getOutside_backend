@@ -30,7 +30,6 @@ A little intro about the installation.
 > `cd ../path/to/the/file`
 
 ## Start des Projekts
-
 1. Virtual Environment. Einen Ordner für virtual Environment anlegen. 
 Entweder per Console:  
 > `python -m venv venv`  
@@ -54,12 +53,17 @@ wenn das nicht funktioniert, kann es helfen mit cd in den Ordner Scripts zu wech
 > `python manage.py runserver`
 
 ## Abhängigkeiten
-alle Abhängigkeiten werden beim Starten des Projekts mit den requirements installiert. 
+Alle Abhängigkeiten werden beim Starten des Projekts mit den requirements installiert. 
+
 
 ## Tools
 Tools, die wir im Backend verwendet haben sind: 
 
-   - python 
-   - sqlite Datenbank im develop Branch 
-   - ... im main Branch
-   - git (GitHub)
+   - Python (Programmiersprache)
+   - Django Rest Framework (Webframework mit Model-View-Presenter Schema)
+   - SQLite Datenbank im develop Branch (Programmbibliothek mit einem relationalen Datenbanksystem)
+   - PostgreSQL im main Branch (Objektorientiertes Datenbankmanagementsystem)
+   - git (GitHub, Versionskontrolle)
+   - HTTPie, cURL (Programmbibliothek und ein Kommandozeilen-Programm (CLI) zum Testen) 
+   - pytest (Test Framework)
+

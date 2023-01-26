@@ -17,9 +17,11 @@ class CommentsViewSet(APIView):
 
     def post(self, request, format='json'):
         data_request=JSONParser().parse(request)
+        print(request)
         serializer = CommentsSerializer(data=data_request)
         if serializer.is_valid():
             comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=mappoint)    
+
             if comment:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
@@ -42,4 +44,4 @@ class CommentsViewSet(APIView):
         if comment:
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return HttpResponse("id not found / no authorization")
+            return HttpResponse("Mappoint id not found / no authorization")

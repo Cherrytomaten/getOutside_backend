@@ -60,4 +60,5 @@ logs/*
 .idea/
 *.DS_STORE
 
+# env
 .env

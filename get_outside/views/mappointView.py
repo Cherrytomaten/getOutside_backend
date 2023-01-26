@@ -1,12 +1,15 @@
 from rest_framework import routers, serializers, viewsets, status, permissions
-from get_outside.serializers.serializers import MappointSerializer, ImageSerializer
-from django.contrib.auth.models import User
-from get_outside.models.mappointModel import Mappoint, Images
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.views import APIView
+
+from django.contrib.auth.models import User
+from django.db.models import Avg
+from django.shortcuts import get_object_or_404
+
+from get_outside.models.mappointModel import Images, Mappoint, Ratings
+from get_outside.serializers.serializers import ImageSerializer, MappointSerializer, RatingSerializer
 
 
 # ViewSets define the view behavior.
@@ -95,3 +98,40 @@ class UploadImage(APIView):
             {"res": "Object deleted!"},
             status=status.HTTP_200_OK
         )
+
+class RatingViewSet(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        # es wird übergeben: rating, mappoint_id und user_id
+        data_request = JSONParser().parse(request)
+        serializer = RatingSerializer(data=data_request)
+        if serializer.is_valid():
+            value = serializer.save()
+            if value:
+                json = serializer.data
+                return Response(json, status=status.HTTP_201_CREATED)
+            return Response(json, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request, pk):
+        # pk = id vom Mappoint
+        if pk:  
+            try:
+                average = Ratings.objects.all().filter(mappoint=pk).aggregate(Avg('rating'))
+                print(average)
+                return Response(average, status=status.HTTP_200_OK)
+            except Ratings.DoesNotExist:
+                return None
+        else:
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+
+    def delete(self, request, pk):
+        # pk = id vom Rating selber
+        rating = get_object_or_404(Ratings, pk=pk)
+        ratingCreator = rating.creator
+        user_id = self.request.user.id
+        if user_id == ratingCreator:
+            rating.delete()
+            return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)

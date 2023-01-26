@@ -43,6 +43,7 @@ class CategoryViewSet(APIView):
 
 class CategoryViewSet2(APIView):
     permission_classes = (IsAdminUser,)
+    
     def put(self, request, pk , format='json'):
         object = get_object_or_404(Category, pk=pk)
         data_request = JSONParser().parse(request)
