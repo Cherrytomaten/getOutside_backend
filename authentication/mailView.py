@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from authentication.models import CustomUser
 from authentication.serializers import ResetPasswordSerializer
 from authentication.token import account_activation_token
+from django.template import Template
 
 
 class ConfirmEmail(APIView):
@@ -30,9 +31,11 @@ class ConfirmEmail(APIView):
             link = f'{activate_link_url}?user_uuid={user.uuid}&user_mail={email}&confirmation_token={confirmation_token}'  # link erstellen
 
             subject = "Welcome to GetOutside :)"
+
             text = f'Hello {user.username} :) please confirm your email using the following link: {link}'  # TODO: email tamplate einbauen, damit die mail schön ausieht
             sent_mail = send_mail(  # email senden
                 subject,
+                # html_message = Template("<b>Hello</b>"),
                 text,
                 'get_outside.cherrytomaten@gmail.com',
                 [email]
@@ -41,7 +44,19 @@ class ConfirmEmail(APIView):
         else:
             return Response({'error': 'user with this email not found!'}, status=400)
 
-
+email_body = """\
+    <html>
+      <head></head>
+      <body>
+        <h2>%s</h2>
+        <p>%s</p>
+        <h5>%s</h5>
+      </body>
+    </html>
+    """ % (user, message, email)
+email = EmailMessage('A new mail!', email_body, to=['someEmail@gmail.com'])
+email.content_subtype = "html" # this is the crucial part 
+email.send()
 class ActivateUser(APIView):
     permission_classes = (AllowAny,)
 
