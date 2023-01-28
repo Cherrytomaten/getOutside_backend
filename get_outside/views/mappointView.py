@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 
-from get_outside.models.mappointModel import Images, Mappoint, Ratings
+from get_outside.models.RatingsModel import Ratings
+from get_outside.models.mappointModel import Images, Mappoint
 from get_outside.serializers.serializers import ImageSerializer, MappointSerializer, RatingSerializer
 
 

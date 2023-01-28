@@ -1,7 +1,10 @@
 from rest_framework import serializers
+
+from ..models.RatingsModel import Ratings
+
 """ from django.contrib.auth.models import User """
 from ..models.categoryModel import Category
-from ..models.mappointModel import Mappoint, Images, Ratings
+from ..models.mappointModel import Mappoint, Images
 from get_outside.serializers.commentSerializer import CommentsSerializer
 
 
@@ -11,6 +14,7 @@ class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Images
         fields = ['id', 'image', 'mappoint']
+
 
 class RatingSerializer(serializers.ModelSerializer):
     rating = serializers.FloatField()

@@ -5,6 +5,7 @@ from get_outside.models.mappointModel import Mappoint, Images, Ratings
 from get_outside.models.categoryModel import Category
 from get_outside.models.favoritesModel import FavoritePins
 from get_outside.models.commentsModel import Comment
+from get_outside.models.RatingsModel import Ratings
 
 
 class CustomUserAdmin(admin.ModelAdmin):

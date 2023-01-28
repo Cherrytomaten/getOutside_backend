@@ -53,7 +53,7 @@ next-env.d.ts
 .vscode
 
 *.py[cod]
-media/*
+media/
 keys/
 logs/*
 .coverage
