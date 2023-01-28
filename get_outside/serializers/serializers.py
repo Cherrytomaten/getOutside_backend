@@ -26,7 +26,7 @@ class RatingSerializer(serializers.ModelSerializer):
 
 # Serializers define the API representation.
 class MappointSerializer(serializers.ModelSerializer):
-    # comments = CommentsSerializer(many=True, required=False)
+    comments = CommentsSerializer(many=True, required=False)
     image = ImageSerializer(many=True, required=False)
     rating = RatingSerializer(many=True, required=False)
 
