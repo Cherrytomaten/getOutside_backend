@@ -51,7 +51,7 @@ class ActivateUser(APIView):
         # token = request.data.get('confirmation_token')
         print(confirmation_token)
         user_id = request.data.get('user_id')
-        user_mail = request.data.get('user_mail')
+        user_mail = request.GET.get('user_mail')
         # user_id = request.data('user_id')
         print(user_mail)
         try:

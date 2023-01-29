@@ -7,4 +7,4 @@ class CommentsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = '__all__' #['author', 'text', 'created_at', 'mappointPin']
+        fields = '__all__'
