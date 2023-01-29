@@ -54,7 +54,7 @@ class Images(models.Model):
 
     def __str__(self):
         # return the id
-        return self.id
+        return str(self.id)
 
     def delete(self, *args, **kwargs):
         os.remove(os.path.join(settings.MEDIA_ROOT, self.image.name))
