@@ -36,7 +36,7 @@ class MappointViewSet(APIView):
         data_request = JSONParser().parse(request)
         serializer = MappointSerializer(data=data_request)
         if serializer.is_valid():
-            point = serializer.save(creator_id=self.request.user.id)
+            point = serializer.save()
             if point:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
