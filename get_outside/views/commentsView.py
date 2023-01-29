@@ -13,14 +13,13 @@ from get_outside.models.commentsModel import Comment
 # ViewSets define the view behavior.
 class CommentsViewSet(APIView):
 
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format='json'):
         data_request=JSONParser().parse(request)
-        print(request)
         serializer = CommentsSerializer(data=data_request)
         if serializer.is_valid():
-            comment = serializer.save(author_id=self.request.user.id) #, mappointPin_id=mappoint)    
+            comment = serializer.save() #author_id=self.request.user.id) #, mappointPin_id=mappoint)    
 
             if comment:
                 json = serializer.data
@@ -39,7 +38,7 @@ class CommentsViewSet(APIView):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     def get(self, request, pk):
-        comment = Comment.objects.all().filter(mappointPin_id=pk)
+        comment = Comment.objects.all().filter(mappointPin=pk)
         serializer = CommentsSerializer(comment, many=True)
         if comment:
             return Response(serializer.data, status=status.HTTP_200_OK)

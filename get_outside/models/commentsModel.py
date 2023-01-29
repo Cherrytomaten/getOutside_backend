@@ -14,7 +14,6 @@ def key_generator():
 
 class Comment(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    #id = models.IntegerField(primary_key=True, default=key_generator, unique=True)
     mappointPin = models.ForeignKey(Mappoint, related_name='comments', default=0, db_constraint=False, on_delete= models.CASCADE)
     author = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE, db_constraint=False) 
     created_at = models.DateTimeField(auto_now=True)
