@@ -10,4 +10,4 @@ class Ratings(models.Model):
     creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
