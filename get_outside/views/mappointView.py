@@ -15,7 +15,7 @@ from get_outside.serializers.serializers import ImageSerializer, MappointSeriali
 
 # ViewSets define the view behavior.
 class MappointViewSet(APIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
 
     def detail_view(self, pk):
         try:

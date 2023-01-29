@@ -20,18 +20,18 @@ class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ratings
-        fields = ['id', 'rating', 'mappoint', 'creator_id']
+        fields = ['id', 'rating', 'mappoint', 'creator']
 
 
 # Serializers define the API representation.
 class MappointSerializer(serializers.ModelSerializer):
     comments = CommentsSerializer(many=True, required=False)
-    rating = RatingSerializer(many=True, required=False)
+    ratings = RatingSerializer(many=True, required=False)
     image = ImageSerializer(many=True, required=False)
 
     class Meta:
         model = Mappoint
-        fields = '__all__'
+        fields =  '__all__'
 
     def create(self, validated_data):
         return Mappoint.objects.create(**validated_data)
@@ -43,7 +43,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = '__all__'  # fields = ['id','name']
+        fields = '__all__' 
 
     def create(self, validated_data):
         return Category.objects.create(**validated_data)

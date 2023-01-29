@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404
 # ViewSets define the view behavior. Only Admin can CRUD Category
 class CategoryViewSet(APIView):
     get_serializer= CategorySerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAdminUser,)
 
     def detail_view(self, id):
         try:
